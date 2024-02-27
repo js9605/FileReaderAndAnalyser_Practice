@@ -12,6 +12,27 @@ class Program
     static void Main()
     {
         Program program = new Program("exampleFile.txt");
+
+
+        string filePath = "yourfile.txt";
+
+        FileReader fileReader = new FileReader();
+        ContentAnalyzer contentAnalyzer = new ContentAnalyzer();
+
+        string fileContent = fileReader.ReadFileContent(filePath);
+
+        int wordCount = contentAnalyzer.CountWords(fileContent);
+        int characterCount = contentAnalyzer.CountCharacters(fileContent);
+        List<string> mostCommonWords = contentAnalyzer.MostCommonWords(fileContent, numberOfWords: 5);
+
+        Console.WriteLine("Analysis Results:");
+        Console.WriteLine($"Total Words: {wordCount}");
+        Console.WriteLine($"Total Characters: {characterCount}");
+        Console.WriteLine("Most Common Words:");
+        foreach (string word in mostCommonWords)
+        {
+            Console.WriteLine($"- {word}");
+        }
     }
 
 }
